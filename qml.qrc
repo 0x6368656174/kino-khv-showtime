@@ -1,0 +1,14 @@
+<RCC>
+    <qresource prefix="/">
+        <file>src/qml/main.qml</file>
+        <file>src/qml/ShowLabel.qml</file>
+        <file>src/qml/StyledText.qml</file>
+        <file>src/qml/StyledSansText.qml</file>
+        <file>src/qml/MovieFormatLabel.qml</file>
+        <file>src/qml/pallete.js</file>
+        <file>src/qml/Border.qml</file>
+        <file>src/qml/cinemaConfig.js</file>
+        <file>src/qml/TeaserPlayer.qml</file>
+        <file>src/qml/Showtime.qml</file>
+    </qresource>
+</RCC>

@@ -1,0 +1,21 @@
+<RCC>
+    <qresource prefix="/">
+        <file>src/fonts/FontAwesome.otf</file>
+        <file>src/fonts/museo-cyrl-100.ttf</file>
+        <file>src/fonts/museo-cyrl-100-italic.ttf</file>
+        <file>src/fonts/museo-cyrl-300.ttf</file>
+        <file>src/fonts/museo-cyrl-300-italic.ttf</file>
+        <file>src/fonts/museo-cyrl-500.ttf</file>
+        <file>src/fonts/museo-cyrl-500-italic.ttf</file>
+        <file>src/fonts/museo-cyrl-700.ttf</file>
+        <file>src/fonts/museo-cyrl-700-italic.ttf</file>
+        <file>src/fonts/museo-cyrl-900.ttf</file>
+        <file>src/fonts/museo-cyrl-900-italic.ttf</file>
+        <file>src/fonts/museo-cyrl-sans-100.ttf</file>
+        <file>src/fonts/museo-cyrl-sans-300.ttf</file>
+        <file>src/fonts/museo-cyrl-sans-500.ttf</file>
+        <file>src/fonts/museo-cyrl-sans-700.ttf</file>
+        <file>src/fonts/museo-cyrl-sans-900.ttf</file>
+        <file>src/fonts/PTRoubleSans.ttf</file>
+    </qresource>
+</RCC>

@@ -1,0 +1,45 @@
+# Others
+.DS_Store
+IqC4Mobile/
+
+*~
+.directory
+
+# C++ objects and libs
+
+*.slo
+*.lo
+*.o
+*.a
+*.la
+*.lai
+*.so
+*.dll
+*.dylib
+
+# Qt-es
+
+/.qmake.cache
+/.qmake.stash
+*.pro.user
+*.pro.user.*
+*.txt.user
+*.txt.user.*
+*.moc
+moc_*.cpp
+qrc_*.cpp
+ui_*.h
+Makefile*
+*-build-*
+
+# QtCreator
+
+*.autosave
+
+# CLion
+.idea
+
+# VisualStudio
+.vs
+*.vcxproj.filters
+*.vcxproj.user

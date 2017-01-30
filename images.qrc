@@ -1,0 +1,10 @@
+<RCC>
+    <qresource prefix="/">
+        <file>src/images/khabarovsk.png</file>
+        <file>src/images/pattern.png</file>
+        <file>src/images/atmosfera.png</file>
+        <file>src/images/drujba.png</file>
+        <file>src/images/forum.png</file>
+        <file>src/images/logo.png</file>
+    </qresource>
+</RCC>
