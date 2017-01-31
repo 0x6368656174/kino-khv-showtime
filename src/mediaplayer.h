@@ -14,6 +14,7 @@ class MediaPlayer : public QMediaPlayer
     Q_OBJECT
     Q_PROPERTY(QAbstractVideoSurface* videoSurface READ videoSurface WRITE setVideoSurface )
     Q_PROPERTY(int movieId READ movieId NOTIFY movieIdChanged)
+    Q_PROPERTY(bool enabled READ enabled NOTIFY enabledChanged)
 
 public:
     explicit MediaPlayer(QObject *parent = nullptr);
@@ -27,8 +28,11 @@ public:
 
     Q_INVOKABLE void playNext();
 
+    bool enabled() const;
+
 signals:
     void movieIdChanged();
+    void enabledChanged();
 
 private:
     QAbstractVideoSurface *m_videoSurface;

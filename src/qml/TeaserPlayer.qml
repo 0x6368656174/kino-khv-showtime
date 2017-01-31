@@ -7,7 +7,7 @@ import "pallete.js" as Pallete
 Item {
     Timer {
         interval: showtimeTime
-        running: !teaserPlayer.visible && showtimeTime !== 0
+        running: !teaserPlayer.visible && showtimeTime !== 0 && mediaPlayer.enabled
         repeat: true
         onTriggered: {
             teaserPlayer.visible = true
@@ -111,7 +111,7 @@ Item {
         anchors.right: parent.right
         anchors.bottom: parent.bottom
         color: "#272727"
-        height: 135
+        height: 135 * sc
 
         Border {
             width: parent.width
@@ -119,15 +119,15 @@ Item {
 
         RowLayout {
             anchors.fill: parent
-            anchors.leftMargin: 60
-            anchors.rightMargin: 50
-            anchors.topMargin: 4
+            anchors.leftMargin: 60 * sc
+            anchors.rightMargin: 50 * sc
+            anchors.topMargin: 4 * sc
 
             StyledText {
                 Layout.fillHeight: true
                 Layout.fillWidth: true
                 color: "white"
-                font.pixelSize: 42
+                font.pixelSize: 42 * sc
                 font.weight: Font.DemiBold
                 text: movie.title + ' <span style="color: #636363; font-weight: normal;">' + movie.ageLimit + "+</span>"
                 textFormat: Text.RichText
@@ -138,9 +138,9 @@ Item {
             StyledText {
                 visible: nextShow1Repeater.count == 0
                 color: Pallete.colorPink
-                font.pixelSize: 42
+                font.pixelSize: 42 * sc
                 wrapMode: Text.WordWrap
-                Layout.leftMargin: 35
+                Layout.leftMargin: 35 * sc
                 text: "Премьера " + showDateFormat({startDateTime: movie.rentalStart}, false)
             }
 
@@ -161,23 +161,23 @@ Item {
 
                     StyledText {
                         color: "#636363"
-                        font.pixelSize: 42
+                        font.pixelSize: 42 * sc
                         wrapMode: Text.WordWrap
-                        Layout.leftMargin: 35
+                        Layout.leftMargin: 35 * sc
                         text: showDateFormat(show2, false)
                     }
 
                     StyledText {
-                        Layout.leftMargin: 35
+                        Layout.leftMargin: 35 * sc
                         color: "white"
-                        font.pixelSize: 42
+                        font.pixelSize: 42 * sc
                         text: Qt.formatTime(show2.startDateTime, "hh:mm")
                     }
 
                     StyledText {
-                        Layout.leftMargin: 35
+                        Layout.leftMargin: 35 * sc
                         color: Pallete.colorBlue
-                        font.pixelSize: 42
+                        font.pixelSize: 42 * sc
                         text: cinemaHall2.name
                     }
                 }
@@ -188,8 +188,8 @@ Item {
     Rectangle {
         id: movieInfo
         visible: !video.visible && movie.valid
-        width: 1620
-        height: 490
+        width: 1620 * sc
+        height: 490 * sc
         color: "#272727"
         anchors.centerIn: parent
 
@@ -198,14 +198,14 @@ Item {
         }
 
         RowLayout {
-            anchors.topMargin: 4
+            anchors.topMargin: 4 * sc
             anchors.fill: parent
             spacing: 0
 
             Image {
                 id: movieImage
                 Layout.fillHeight: true
-                width: 486
+                width: 486 * sc
                 source: imageResizer.url
 
                 ImageResizer {
@@ -220,8 +220,8 @@ Item {
             }
 
             ColumnLayout {
-                Layout.leftMargin: 120
-                Layout.rightMargin: 120
+                Layout.leftMargin: 120 * sc
+                Layout.rightMargin: 120 * sc
                 Layout.fillWidth: true
                 Layout.fillHeight: true
                 Layout.minimumHeight: movieImage.width
@@ -229,13 +229,13 @@ Item {
 
                 StyledText {
                     color: "white"
-                    font.pixelSize: 78
+                    font.pixelSize: 78 * sc
                     font.weight: Font.DemiBold
                     text: movie.title + ' <span style="color: #636363; font-weight: normal;">' + movie.ageLimit + "+</span>"
                     textFormat: Text.RichText
                     wrapMode: Text.WordWrap
                     Layout.fillWidth: true
-                    Layout.topMargin: 65
+                    Layout.topMargin: 65 * sc
                 }
 
                 Item {
@@ -245,10 +245,10 @@ Item {
                 StyledText {
                     visible: nextShow2Repeater.count == 0
                     color: Pallete.colorPink
-                    font.pixelSize: 53
+                    font.pixelSize: 53 * sc
                     wrapMode: Text.WordWrap
                     Layout.fillWidth: true
-                    Layout.bottomMargin: 75
+                    Layout.bottomMargin: 75 * sc
                     verticalAlignment: Text.AlignBottom
                     text: "Премьера " + showDateFormat({startDateTime: movie.rentalStart}, false)
                 }
@@ -259,7 +259,7 @@ Item {
                     model: nextShow
                     delegate: RowLayout {
                         Layout.fillWidth: true
-                        Layout.bottomMargin: 75
+                        Layout.bottomMargin: 75 * sc
 
                         Show {
                             id: show1
@@ -273,10 +273,10 @@ Item {
 
                         StyledText {
                             color: "#636363"
-                            font.pixelSize: 53
+                            font.pixelSize: 53 * sc
                             wrapMode: Text.WordWrap
                             Layout.alignment: Qt.AlignBottom
-                            Layout.maximumWidth: 320
+                            Layout.maximumWidth: 320 * sc
                             text: showDateFormat(show1, true)
                         }
 
@@ -287,15 +287,15 @@ Item {
                         StyledText {
                             Layout.alignment: Qt.AlignBottom
                             color: "white"
-                            font.pixelSize: 68
+                            font.pixelSize: 68 * sc
                             text: Qt.formatTime(show1.startDateTime, "hh:mm")
                         }
 
                         StyledText {
                             Layout.alignment: Qt.AlignBottom
-                            Layout.leftMargin: 35
+                            Layout.leftMargin: 35 * sc
                             color: Pallete.colorBlue
-                            font.pixelSize: 68
+                            font.pixelSize: 68 * sc
                             text: cinemaHall1.name
                         }
                     }

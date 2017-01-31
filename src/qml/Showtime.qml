@@ -8,24 +8,26 @@ import "cinemaConfig.js" as CinemaConfig
 Item {
     ColumnLayout {
         anchors.fill: parent
-        anchors.leftMargin: 50
-        anchors.rightMargin: 50
+        anchors.leftMargin: 50 * sc
+        anchors.rightMargin: 50 * sc
         spacing: 0
 
         Item {
-            height: 165
+            height: 165 * sc
             Layout.fillWidth: true
             Image {
                 source: CinemaConfig.config(cinemaName).logo
+                width: sourceSize.width * sc
+                height: sourceSize.height * sc
                 anchors.bottom: parent.bottom
-                anchors.bottomMargin: CinemaConfig.config(cinemaName).logoMargin
+                anchors.bottomMargin: CinemaConfig.config(cinemaName).logoMargin * sc
             }
 
             StyledText {
                 anchors.right: parent.right
                 anchors.bottom: parent.bottom
-                anchors.bottomMargin: 50
-                font.pixelSize: 42
+                anchors.bottomMargin: 50 * sc
+                font.pixelSize: 42 * sc
                 font.weight: Font.DemiBold
                 id: time
                 text: setTime()
@@ -47,8 +49,8 @@ Item {
             height: {
                 var contentHeight = movies.contentHeight
                 if (contentHeight < 0)
-                    return 875
-                return Math.min(875, contentHeight)
+                    return 875 * sc
+                return Math.min(875 * sc, contentHeight)
             }
             color: "#0f0f0f"
             clip: true
@@ -56,7 +58,7 @@ Item {
             ListView {
                 id: movies
                 anchors.fill: parent
-                spacing: 10
+                spacing: 10 * sc
                 model: ShowMovieModel {
                     day: currentDateTime
                     cinemaId: cinema.objectId
@@ -68,7 +70,7 @@ Item {
                     running: true
                     repeat: true
                     onTriggered: {
-                        var index = movies.indexAt(10, movies.contentY + movies.height)
+                        var index = movies.indexAt(10 * sc, movies.contentY + movies.height)
                         positionAnimation.running = false
                         var pos = movies.contentY
                         var destPos
@@ -94,7 +96,7 @@ Item {
 
                 delegate: Item {
                     id: movieDelegate
-                    height: 114 * cinemaHalls.count
+                    height: 114 * sc * cinemaHalls.count
                     width: movies.width
 
                     Border {
@@ -104,7 +106,7 @@ Item {
                     Rectangle {
                         z: 1
                         property bool isTop: {
-                            if (!positionAnimation.running && movies.indexAt(10, movies.contentY - 10) === index) {
+                            if (!positionAnimation.running && movies.indexAt(10 * sc, movies.contentY - 10 * sc) === index) {
                                 return true
                             }
                             return false
@@ -123,10 +125,10 @@ Item {
                         }
                         opacity: {
                             var forConnect = movies.contentHeight
-                            if (!positionAnimation.running && movies.indexAt(10, movies.contentY + movies.height) === index) {
+                            if (!positionAnimation.running && movies.indexAt(10 * sc, movies.contentY + movies.height) === index) {
                                 return 0.6
                             }
-                            if (!positionAnimation.running && movies.indexAt(10, movies.contentY - 10) === index) {
+                            if (!positionAnimation.running && movies.indexAt(10 * sc, movies.contentY - 10 * sc) === index) {
                                 return 0.6
                             }
 
@@ -158,7 +160,7 @@ Item {
                             width: 630
                             anchors.top: parent.top
                             anchors.bottom: parent.bottom
-                            anchors.topMargin: 4
+                            anchors.topMargin: 4 * sc
                             color: "#272727"
 
                             RowLayout {
@@ -171,23 +173,23 @@ Item {
                                 }
 
                                 StyledText {
-                                    Layout.preferredWidth: 430
+                                    Layout.preferredWidth: 430 * sc
                                     wrapMode: Text.WordWrap
                                     text: movie.title
                                     color: "white"
-                                    font.pixelSize: 33
+                                    font.pixelSize: 33 * sc
                                     font.weight: Font.DemiBold
                                     Layout.alignment: Qt.AlignVCenter
                                 }
 
                                 StyledText {
                                     text: movie.ageLimit + "+"
-                                    font.pixelSize: 32
+                                    font.pixelSize: 32 * sc
                                     color: "#767676"
                                     Layout.alignment: Qt.AlignVCenter
-                                    Layout.leftMargin: 20
-                                    Layout.minimumWidth: 75
-                                    Layout.maximumWidth: 75
+                                    Layout.leftMargin: 20 * sc
+                                    Layout.minimumWidth: 75 * sc
+                                    Layout.maximumWidth: 75 * sc
                                 }
                             }
                         }
@@ -209,7 +211,7 @@ Item {
                                 }
 
                                 delegate: Item {
-                                    height: 114
+                                    height: 114 * sc
                                     width: cinemaHalls.width
 
                                     Border {
@@ -219,7 +221,7 @@ Item {
                                     RowLayout {
                                         spacing: 0
                                         anchors.fill: parent
-                                        anchors.topMargin: 4
+                                        anchors.topMargin: 4 * sc
 
                                         Item {
                                             height: parent.height
@@ -229,8 +231,8 @@ Item {
                                         ListView {
                                             id: shows
                                             height: parent.height
-                                            Layout.rightMargin: 30
-                                            width: count * 115
+                                            Layout.rightMargin: 30 * sc
+                                            width: count * 115 * sc
                                             orientation: ListView.Horizontal
                                             spacing: 0
 
@@ -253,7 +255,7 @@ Item {
                                         Rectangle {
                                             color: "#272727"
                                             height: parent.height
-                                            width: 220
+                                            width: 220 * sc
 
                                             CinemaHall {
                                                 id: cinemaHall
@@ -262,11 +264,11 @@ Item {
 
                                             StyledText {
                                                 text: cinemaHall.name
-                                                font.pixelSize: 30
+                                                font.pixelSize: 30 * sc
                                                 font.weight: Font.DemiBold
                                                 color: Pallete.colorBlue
                                                 anchors.fill: parent
-                                                anchors.leftMargin: 18
+                                                anchors.leftMargin: 18 * sc
                                                 verticalAlignment: Text.AlignVCenter
                                             }
                                         }

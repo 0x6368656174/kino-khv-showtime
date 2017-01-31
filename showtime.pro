@@ -8,10 +8,12 @@ include(IqC4Mobile/IqC4Mobile.pri)
 
 SOURCES += \
     src/main.cpp \
-    src/mediaplayer.cpp
+    src/mediaplayer.cpp \
+    src/screeenmanager.cpp
 
 HEADERS += \
-    src/mediaplayer.h
+    src/mediaplayer.h \
+    src/screeenmanager.h
 
 RESOURCES += \
     qml.qrc \

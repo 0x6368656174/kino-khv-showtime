@@ -8,25 +8,25 @@ Item {
         var diff = show.startDateTime.getTime() - currentDateTime.getTime()
         return diff > 0 && diff < 3600000
     }
-    width: 115
+    width: 115 * sc
 
     Column {
         anchors.left: parent.left
         anchors.right: parent.right
         anchors.verticalCenter: parent.verticalCenter
-        anchors.verticalCenterOffset: 5
+        anchors.verticalCenterOffset: 5 * sc
         spacing: 0
 
         Rectangle {
             color: soon?Pallete.colorBlue:"transparent"
-            width: 95
-            height: 40
+            width: 95 * sc
+            height: 40 * sc
             anchors.horizontalCenter: parent.horizontalCenter
 
             StyledText {
                 id: time
                 text: Qt.formatTime(show.startDateTime, "hh:mm")
-                font.pixelSize: 33
+                font.pixelSize: 33 * sc
                 horizontalAlignment: Text.AlignHCenter
                 color: show.startDateTime > currentDateTime?"white":"#6a6a6a"
                 anchors.fill: parent
@@ -46,7 +46,7 @@ Item {
                 }
                 result += "</font> 9"
             }
-            font.pixelSize: 24
+            font.pixelSize: 24 * sc
             color: show.startDateTime > currentDateTime?Pallete.colorPink:"transparent"
             anchors.left: parent.left
             anchors.right: parent.right

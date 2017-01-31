@@ -64,6 +64,8 @@ void MediaPlayer::setDir(const QString &dir)
 
     updatePlaylist();
     updateAds();
+
+    emit enabledChanged();
 }
 
 void MediaPlayer::playNext()
@@ -75,6 +77,15 @@ void MediaPlayer::playNext()
     play();
 
     updatePlaylist();
+}
+
+bool MediaPlayer::enabled() const
+{
+    if (m_dir.isEmpty())
+        return false;
+
+    QDir dir (m_dir);
+    return dir.exists();
 }
 
 void MediaPlayer::updatePlaylist()

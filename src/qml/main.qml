@@ -8,12 +8,16 @@ import "cinemaConfig.js" as CinemaConfig
 Window {
     id: window
     visible: true
-    visibility: fullSceen?Window.FullScreen:Window.Windowed
-    width: 1920
-    height: 1080
-    title: qsTr("Hello World")
+    width: 1920 * sc
+    height: 1080 * sc
+    title: qsTr("#Kino-khv")
 
-    Component.onCompleted: update()
+    Component.onCompleted: {
+        if(fullSceen) {
+            screenManager.setScreen(window, screen)
+        }
+        update()
+    }
 
     property var currentDateTime: new Date()
 

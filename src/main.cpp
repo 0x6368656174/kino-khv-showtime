@@ -10,7 +10,9 @@
 #include <IqC4MobileShowRepository>
 #include <IqC4MobileQmlNetworkAccessManagerFactory>
 #include "mediaplayer.h"
+#include "screeenmanager.h"
 #include <ctime>
+#include <QScreen>
 
 int main(int argc, char *argv[])
 {
@@ -56,6 +58,9 @@ int main(int argc, char *argv[])
     QCommandLineOption afterMovieDialogTime ("movie-dialog-time", "<Время> отображения диалога после ролика в секундах. Если установить в 0, то диалог после ролика отображаться не будет. По-умолчанию: 5.", "время", "5");
     parser.addOption(afterMovieDialogTime);
 
+    QCommandLineOption screen ("screen", "<Номер> экрана на котором будет запущено приложение. Нумерация начинается с 0. По-умолчанию: 0.", "номер", "0");
+    parser.addOption(screen);
+
     parser.process(app);
 
     IqC4Mobile::instance()->setBaseUrl(QUrl("https://kino-khv.ru"));
@@ -81,13 +86,24 @@ int main(int argc, char *argv[])
     QQmlApplicationEngine engine;
     engine.setNetworkAccessManagerFactory(&networkAccessManagerFactory);
 
+    ScreeenManager screenManager;
+
+    auto screenValue = parser.value(screen).toInt();
+    auto appScreen = QGuiApplication::screens().at(screenValue);
+
+    float sc = static_cast<float>(appScreen->geometry().width() / 1920.0);
+    qDebug() << sc;
+
     engine.rootContext()->setContextProperty("cinemaName", parser.value(cinema));
     engine.rootContext()->setContextProperty("fullSceen", parser.isSet(fullScreen));
     engine.rootContext()->setContextProperty("pageTime", parser.value(pageTime).toInt() * 1000);
     engine.rootContext()->setContextProperty("pageAnimationDuration", parser.value(pageAnimation).toInt());
     engine.rootContext()->setContextProperty("showtimeTime", parser.value(showtimeTime).toInt() * 1000);
     engine.rootContext()->setContextProperty("movieDialogTime", parser.value(afterMovieDialogTime).toInt() * 1000);
+    engine.rootContext()->setContextProperty("screen", screenValue);
+    engine.rootContext()->setContextProperty("sc", sc);
     engine.rootContext()->setContextProperty("mediaPlayer", &mediaPlayer);
+    engine.rootContext()->setContextProperty("screenManager", &screenManager);
 
     engine.load(QUrl(QStringLiteral("qrc:/src/qml/main.qml")));
 
